@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>ACCÈS RESTREINT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Anton&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ============ LOGIN / TERMINAL ============ -->
+  <section id="login" class="screen active">
+    <div class="scanlines"></div>
+    <div class="terminal">
+      <div id="term-output" class="term-output"></div>
+      <form id="term-form" class="term-form" autocomplete="off" hidden>
+        <span class="prompt">&gt;</span>
+        <input id="term-input" class="term-input" type="text" inputmode="text"
+               autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="code" />
+        <span class="cursor-block">_</span>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section id="experience" class="screen">
+    <div class="stage" id="stage">
+      <div class="montage-wrap" id="montageWrap">
+        <img id="montage" class="montage" alt="" draggable="false" />
+      </div>
+      <div id="glitchHead" class="glitch-head" hidden></div>
+      <button id="hotspot" class="hotspot" aria-label="?" hidden></button>
+      <img id="face" class="face" alt="" draggable="false" />
+      <div id="glitchBurst" class="glitch-burst"></div>
+      <div id="flash" class="flash"></div>
+    </div>
+
+    <!-- rotate-to-landscape prompt -->
+    <div id="rotate" class="rotate-overlay" hidden>
+      <div class="rotate-inner">
+        <div class="rotate-icon">📱</div>
+        <p class="rotate-text">Tourne ton téléphone</p>
+        <p class="rotate-sub">…et regarde bien la photo 👀</p>
+        <button id="rotate-skip" class="ghost-btn">continuer quand même</button>
+      </div>
+    </div>
+
+    <!-- ending -->
+    <div id="ending" class="ending" hidden>
+      <div class="ending-inner">
+        <p class="ending-kicker" id="endingKicker">BIENVENUE DANS LE PACK</p>
+        <p class="ending-main">Maintenant… ouvre le paquet 👀</p>
+        <div class="ending-race">
+          <span class="ending-race-name">27 SEPTEMBRE</span>
+          <span class="ending-race-meta">LEVALLOIS</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="calibrate-readout" class="calibrate-readout" hidden></div>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

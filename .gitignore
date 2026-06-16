@@ -1,0 +1,9 @@
+# Raw original photos — kept locally to regenerate assets, NOT published.
+# (Avoids exposing full-res personal photos on the public site.)
+4-runners.png
+5-runners.png
+6-runners.png
+gilou.jpg
+matth.jpg
+
+.DS_Store
