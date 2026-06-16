@@ -265,6 +265,32 @@ body { font-family: "Share Tech Mono", monospace; color: var(--green); }
   pointer-events: none;
 }
 
+/* hint on the photo screen, guiding them to tap the glitch */
+.photo-hint {
+  position: absolute;
+  left: 50%;
+  bottom: calc(4vh + env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  z-index: 5;
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  font-family: "Share Tech Mono", monospace;
+  font-size: clamp(13px, 3.6vw, 20px);
+  letter-spacing: 1px;
+  color: var(--green);
+  background: rgba(2, 8, 4, 0.6);
+  border: 1px solid rgba(51, 255, 102, 0.4);
+  border-radius: 4px;
+  padding: 8px 14px;
+  text-shadow: 0 0 8px rgba(51, 255, 102, 0.6);
+  animation: hint-blink 1.6s ease-in-out infinite;
+}
+@keyframes hint-blink {
+  0%, 100% { box-shadow: 0 0 0 rgba(51,255,102,0); }
+  50% { box-shadow: 0 0 16px rgba(51,255,102,0.35); }
+}
+
 /* ============ ROTATE ============ */
 .rotate-overlay {
   position: absolute;

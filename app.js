@@ -60,6 +60,7 @@ const glitchHead = $("glitchHead");
 const face = $("face");
 const glitchBurst = $("glitchBurst");
 const flash = $("flash");
+const photoHint = $("photoHint");
 const rotateOverlay = $("rotate");
 const rotateSkip = $("rotate-skip");
 const ending = $("ending");
@@ -261,6 +262,7 @@ function showTarget(visible) {
 // GPU layer behind when simply hidden — so we stop the animation, drop
 // will-change, clear its paint, and detach it from the DOM entirely.
 function killGlitchHead() {
+  gsap.killTweensOf(glitchHead);
   glitchHead.style.animation = "none";
   glitchHead.style.willChange = "auto";
   glitchHead.style.backgroundImage = "none";
@@ -323,10 +325,16 @@ function launchExperience() {
 
 function initPhoto() {
   const onReady = () => {
+    if (photoReady) return; // guard against onload + complete double-fire
     positionHotspot();
     showTarget(true);
     photoReady = true;
     phase = "photo";
+    // glitch ramps in: 1s calm, then builds over 4s
+    gsap.fromTo(glitchHead, { opacity: 0 },
+      { opacity: 1, duration: 4, delay: 1, ease: "power2.in" });
+    // hint appears once the glitch is noticeable
+    gsap.to(photoHint, { opacity: 1, duration: 0.8, delay: 3, ease: "power1.out" });
   };
   gsap.set(montageWrap, { scale: 1, x: 0, y: 0, transformOrigin: "0 0" });
   gsap.set(face, { opacity: 0 });
@@ -358,6 +366,8 @@ function reveal() {
   phase = "revealing";
   showTarget(false);
   killGlitchHead(); // fully remove it so no stale GPU layer lingers on mobile
+  gsap.killTweensOf(photoHint);
+  gsap.to(photoHint, { opacity: 0, duration: 0.2 });
   rotateOverlay.hidden = true;
 
   glitchBurst.classList.remove("on");
